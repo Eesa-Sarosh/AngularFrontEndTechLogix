@@ -1,12 +1,5 @@
-<form>
+<form #form="ngForm" (submit)="onSubmit(form)">
     <input type="hidden" name="paymentDetailId" [value]="service.formData.paymentDetailId">
-    <div class="mb-3">
-        <label>Card Owner Name</label>
-        <input type="text" class="form-control form-control-lg" 
-        placeholder="Name on Card"
-        #cardOwnerName="ngModel" name="cardOwnerName"
-        [(ngModel)]="service.formData.cardOwnerName">
-    </div>
     <div class="mb-3">
         <label>Card Owner Name</label>
         <input type="text" class="form-control form-control-lg" 
@@ -39,5 +32,6 @@
     </div>
     <div class="d-grid">
         <button class="btn btn-lg btn-success" type="submit">Submit</button>
+        <span class="success-message" *ngIf="successful">Successfully Submitted</span>
     </div>
 </form>

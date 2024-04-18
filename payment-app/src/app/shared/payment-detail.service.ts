@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { PaymentDetail } from './payment-detail.model';
+import { NgForm } from '@angular/forms';
 
 @Injectable({
   providedIn: 'root'
@@ -22,6 +23,14 @@ export class PaymentDetailService {
         console.log(err)
       }
     })
+  }
 
+  postPaymentDetais(){
+    return this.http.post(this.url, this.formData)
+  }
+
+  resetForm(form: NgForm){
+    form.form.reset()
+    this.formData = new PaymentDetail()
   }
 }
