@@ -13,8 +13,18 @@ export class PaymentDetailsFormComponent {
   constructor(public service: PaymentDetailService){}
 
   successful = false
+  updated = false
   
   onSubmit(form: NgForm){
+    if(this.service.formData.paymentDetailId==0){
+      this.insertRecord(form)
+    }
+    else{
+      this.updateRecord(form)
+    }
+  }
+
+  insertRecord(form:NgForm){
     this.service.postPaymentDetais().subscribe({
       next:res=>{
        this.service.list = res as PaymentDetail[]
@@ -24,6 +34,19 @@ export class PaymentDetailsFormComponent {
       error:err=>{
         console.log(err)
         this.successful = false
+      }
+    })
+  }
+  updateRecord(form:NgForm){
+    this.service.putPaymentDetais().subscribe({
+      next:res=>{
+       this.service.list = res as PaymentDetail[]
+       this.service.resetForm(form)
+       this.updated = true
+      },
+      error:err=>{
+        console.log(err)
+        this.updated = false
       }
     })
   }

@@ -12,3 +12,16 @@
     font-size: smaller;
     top: 20px;
   }
+  .update-message {
+    color: #151657; /* Text color for success message */
+    background-color: #d4edea; /* Background color for success message */
+    border-color: #c3d6e6; /* Border color for success message */
+    padding: 10px; /* Padding for the message */
+    margin-top: 10px; /* Top margin for the message */
+    border-radius: 5px; /* Border radius for rounded corners */
+    font-size: smaller;
+    top: 20px;
+  }
+input.ng-invalid{
+    border:1px solid red;
+}
